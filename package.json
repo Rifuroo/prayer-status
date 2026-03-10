@@ -1,8 +1,8 @@
 {
     "name": "prayer-time-reminder",
     "displayName": "Prayer Time Reminder",
-    "description": "Islamic prayer time reminder with live HH:MM:SS countdown, Hijri date, and special Ramadan features. Supports auto-location and customizable settings.",
-    "version": "1.1.0",
+    "description": "Islamic prayer companion with live HH:MM:SS countdown, aesthetic sidebar dashboard, daily Quran verses, and tasbih counter.",
+    "version": "1.1.2",
     "publisher": "riflo",
     "icon": "icons/icon.png",
     "engines": {
@@ -17,13 +17,39 @@
         "ramadan",
         "muslim",
         "sholat",
-        "adhan"
+        "adhan",
+        "tasbih",
+        "quran"
     ],
     "activationEvents": [
         "onStartupFinished"
     ],
     "main": "./extension.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Rifuroo/prayer-status"
+    },
+    "license": "MIT",
     "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "prayer-explorer",
+                    "title": "Prayer Time",
+                    "icon": "icons/icon.png"
+                }
+            ]
+        },
+        "views": {
+            "prayer-explorer": [
+                {
+                    "type": "webview",
+                    "id": "prayerTime.dashboard",
+                    "name": "Dashboard",
+                    "icon": "icons/icon.png"
+                }
+            ]
+        },
         "configuration": {
             "title": "Prayer Time Reminder",
             "properties": {
@@ -61,6 +87,16 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Show seconds in the countdown timer"
+                },
+                "prayer.playAdzanSound": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Play a notification sound when it's time to pray"
+                },
+                "prayer.dailyAyatEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show a random Quran verse on startup"
                 }
             }
         },
@@ -76,15 +112,18 @@
             {
                 "command": "prayerTime.toggleRamadanMode",
                 "title": "Prayer Time: Toggle Ramadan Mode"
+            },
+            {
+                "command": "prayerTime.incrementTasbih",
+                "title": "Prayer Time: Increment Tasbih"
+            },
+            {
+                "command": "prayerTime.resetTasbih",
+                "title": "Prayer Time: Reset Tasbih"
             }
         ]
     },
     "dependencies": {
         "axios": "^1.6.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Rifuroo/prayer-status"
-    },
-    "license": "MIT"
+    }
 }
