@@ -84,7 +84,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/riflo/vscode-prayer-time"
+        "url": "https://github.com/Rifuroo/prayer-status"
     },
     "license": "MIT"
 }
