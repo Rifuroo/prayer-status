@@ -1,5 +1,5 @@
 {
-    "name": "prayer-time",
+    "name": "prayer-time-reminder",
     "displayName": "Prayer Time Reminder",
     "description": "Islamic prayer time reminder with live HH:MM:SS countdown, Hijri date, and special Ramadan features. Supports auto-location and customizable settings.",
     "version": "1.1.0",
