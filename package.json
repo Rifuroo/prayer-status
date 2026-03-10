@@ -1,0 +1,90 @@
+{
+    "name": "prayer-time",
+    "displayName": "Prayer Time Reminder",
+    "description": "Islamic prayer time reminder with live HH:MM:SS countdown, Hijri date, and special Ramadan features. Supports auto-location and customizable settings.",
+    "version": "1.1.0",
+    "publisher": "riflo",
+    "icon": "icons/icon.png",
+    "engines": {
+        "vscode": "^1.80.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "prayer",
+        "islam",
+        "ramadan",
+        "muslim",
+        "sholat",
+        "adhan"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "Prayer Time Reminder",
+            "properties": {
+                "prayer.city": {
+                    "type": "string",
+                    "default": "Malang",
+                    "description": "City name for prayer time calculation. Leave empty for auto-detection via IP."
+                },
+                "prayer.country": {
+                    "type": "string",
+                    "default": "Indonesia",
+                    "description": "Country name for prayer time calculation. Leave empty for auto-detection via IP."
+                },
+                "prayer.method": {
+                    "type": "number",
+                    "default": 11,
+                    "description": "Prayer time calculation method (see aladhan.com/calculation-methods)"
+                },
+                "prayer.notifications": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable popup notifications when prayer time arrives"
+                },
+                "prayer.ramadanMode": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable special Suhoor/Iftar labels and Ramadan greetings"
+                },
+                "prayer.showHijriDate": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show Hijri date in the status bar"
+                },
+                "prayer.showSeconds": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show seconds in the countdown timer"
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "prayerTime.showSchedule",
+                "title": "Prayer Time: Show Today's Schedule"
+            },
+            {
+                "command": "prayerTime.refresh",
+                "title": "Prayer Time: Refresh"
+            },
+            {
+                "command": "prayerTime.toggleRamadanMode",
+                "title": "Prayer Time: Toggle Ramadan Mode"
+            }
+        ]
+    },
+    "dependencies": {
+        "axios": "^1.6.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/riflo/vscode-prayer-time"
+    },
+    "license": "MIT"
+}
